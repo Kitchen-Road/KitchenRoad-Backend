@@ -140,4 +140,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# DB
+db.sqlite3
 # End of https://www.toptal.com/developers/gitignore/api/python
