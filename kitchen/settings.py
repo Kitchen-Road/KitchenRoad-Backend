@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'cozinheiro',
     'receita',
     'dica',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
