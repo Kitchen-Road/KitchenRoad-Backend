@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import CozinheiroSerializer
+from .models import Cozinheiro
 
-# Create your views here.
+class CozinheiroViewSet(viewsets.ModelViewSet):
+    serializer_class = CozinheiroSerializer
+    queryset = Cozinheiro.objects.all()

@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'cozinheiro.Cozinheiro'
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'cozinheiro',
     'receita',
     'dica',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
