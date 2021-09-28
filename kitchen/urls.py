@@ -17,13 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from rest_framework import routers
-from cozinheiro import views as cozinheiroviewsets
-
-route = routers.DefaultRouter()
-
-route.register(r'cozinheiro', cozinheiroviewsets.CozinheiroViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(route.urls)),
+    path('cozinheiro/',include('cozinheiro.urls', 'cozinheiro')),
 ]

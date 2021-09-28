@@ -9,7 +9,7 @@ EXPERIENCIA = [
 ]
 
 class Cozinheiro(AbstractUser):
-    username = models.CharField(max_length=50)
+    username = models.CharField(unique=True, max_length=50)
     email = models.EmailField(unique=True, max_length=100)
     #receitas_completadas = models.ManyToManyField(Receita)
     experiencia = models.CharField(max_length=1, choices=EXPERIENCIA, default='I')
