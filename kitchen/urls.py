@@ -17,8 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from rest_framework import routers
+from receita import views as receitasviewsets
+route = routers.DefaultRouter()
+
+route.register(r'receitas', receitasviewsets.ReceitaViewSet)
+route.register(r'categorias', receitasviewsets.CategoriaViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cozinheiro/',include('cozinheiro.urls', 'cozinheiro')),
+    path('', include(route.urls)),
+    path('cozinheiro/', include('cozinheiro.urls', 'cozinheiro')),
 ]

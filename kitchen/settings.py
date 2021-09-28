@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'knox',
     'cozinheiro',
     'receita',
-    'dica',    
+    'dica',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +125,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Arquivos enviados para o servidor da aplicação
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Default primary key field type
