@@ -18,10 +18,12 @@ from django.urls import path
 from django.urls.conf import include
 from rest_framework import routers
 from receita import views as receitasviewsets
+from dica import views as dicasviewsets
 route = routers.DefaultRouter()
 
 route.register(r'receitas', receitasviewsets.ReceitaViewSet)
 route.register(r'categorias', receitasviewsets.CategoriaViewSet)
+route.register(r'dicas', dicasviewsets.DicaViewSet)
 
 
 urlpatterns = [
