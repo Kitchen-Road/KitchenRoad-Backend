@@ -26,5 +26,6 @@ route.register(r'categorias', receitasviewsets.CategoriaViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(route.urls)),
+    path('', include(route.urls)),
+    path('cozinheiro/', include('cozinheiro.urls', 'cozinheiro')),
 ]
