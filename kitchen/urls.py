@@ -18,9 +18,11 @@ from django.urls import path
 from django.urls.conf import include
 from rest_framework import routers
 from receita import views as categoriaviewsets
-
+from dica import views as dicasviewsets
 route = routers.DefaultRouter()
+
 route.register(r'categorias', categoriaviewsets.CategoriaViewSet)
+route.register(r'dicas', dicasviewsets.DicaViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

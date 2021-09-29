@@ -1,24 +1,18 @@
 from django.db import models
 from django.shortcuts import render
 from rest_framework import viewsets, permissions, generics
+from rest_framework.filters import SearchFilter, OrderingFilter
 from .serializers import ReceitaSerializer, CategoriaSerializer
 from receita import models
-from .models import Receita
 
 
 class ReceitaViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ReceitaSerializer
-
-    def get_queryset(self):
-        user = self.request.user
-        if user.is_staff or user.experiencia == 'A':
-            return Receita.objects.all()
-        else:
-            if user.experiencia == 'I':
-                return Receita.objects.filter(dificuldade=user.experiencia)
-            else:
-                return Receita.objects.exclude(dificuldade='A')
+    queryset = models.Receita.objects.all()
+    filter_backends = (SearchFilter, OrderingFilter)
+    search_fields = (
+        'nome_receita', 'categoria_receita__nome_categoria', 'dificuldade')
 
 
 class CategoriaViewSet(viewsets.ModelViewSet):

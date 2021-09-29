@@ -7,8 +7,7 @@ from django.urls.conf import include
 app_name = "receita"
 route = routers.DefaultRouter()
 
-route.register(
-    r'', receitasviewsets.ReceitaViewSet, basename='listReceita')
+route.register(r'', receitasviewsets.ReceitaViewSet, basename='listReceita')
 
 
 urlpatterns = [
