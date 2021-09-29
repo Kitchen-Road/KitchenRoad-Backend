@@ -21,7 +21,6 @@ from receita import views as receitasviewsets
 from dica import views as dicasviewsets
 route = routers.DefaultRouter()
 
-route.register(r'receitas', receitasviewsets.ReceitaViewSet)
 route.register(r'categorias', receitasviewsets.CategoriaViewSet)
 route.register(r'dicas', dicasviewsets.DicaViewSet)
 
@@ -30,4 +29,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(route.urls)),
     path('cozinheiro/', include('cozinheiro.urls', 'cozinheiro')),
+    path('receitas/', include('receita.urls', 'receita')),
 ]
