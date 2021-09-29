@@ -9,10 +9,17 @@ from receita import models
 class ReceitaViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ReceitaSerializer
-    queryset = models.Receita.objects.all()
+
     filter_backends = (SearchFilter, OrderingFilter)
     search_fields = (
-        'nome_receita', 'categoria_receita__nome_categoria', 'dificuldade')
+        'nome_receita', 'categoria_receita__nome_categoria')
+
+    def get_queryset(self):
+        queryset = models.Receita.objects.all()
+        query = self.request.GET.get("dificuldade")
+        if query:
+            queryset = queryset.filter(dificuldade=query).distinct()
+        return queryset
 
 
 class CategoriaViewSet(viewsets.ModelViewSet):
