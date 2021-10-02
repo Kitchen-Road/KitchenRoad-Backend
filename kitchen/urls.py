@@ -22,10 +22,10 @@ from dica import views as dicasviewsets
 route = routers.DefaultRouter()
 
 route.register(r'categorias', categoriaviewsets.CategoriaViewSet)
-route.register(r'dicas', dicasviewsets.DicaViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('dicas/', include('dica.urls', 'dica')),
     path('receitas/', include('receita.urls', 'receita')),
     path('cozinheiro/', include('cozinheiro.urls', 'cozinheiro')),
     path('', include(route.urls)),
