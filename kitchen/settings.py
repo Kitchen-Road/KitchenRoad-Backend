@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 from datetime import timedelta
 from rest_framework.settings import api_settings
+import django_on_heroku
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-mi_7&gn7wjxqylob*_rtjjg=@(7b#_bfhn+7cqr$25d8#-s!dq'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -150,3 +152,6 @@ CORS_ALLOW_CREDENTIALS = True
 REST_KNOX = {
     'TOKEN_TTL': timedelta(hours=200),
 }
+
+# Configure Django App for Heroku.
+django_on_heroku.settings(locals())

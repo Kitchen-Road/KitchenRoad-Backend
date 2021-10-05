@@ -19,7 +19,7 @@ class Receita(models.Model):
     imagem = models.ImageField(upload_to='post_img')
     link_video_receita = models.URLField()
     categoria_receita = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    ingredientes = models.TextField()
+    ingredientes = models.TextField(default="1.")
     modo_preparo = models.TextField()
     dificuldade = models.CharField(max_length=1, choices=DIFICULDADES_ESCOLHAS)
 
