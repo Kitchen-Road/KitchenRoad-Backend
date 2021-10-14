@@ -14,6 +14,13 @@ class Categoria(models.Model):
         return self.nome_categoria
 
 
+class Epoca(models.Model):
+    nome_epoca = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nome_epoca
+
+
 class Receita(models.Model):
     nome_receita = models.CharField(max_length=50)
     imagem = models.ImageField(upload_to='post_img')
@@ -22,6 +29,7 @@ class Receita(models.Model):
     ingredientes = models.TextField(default="1.")
     modo_preparo = models.TextField()
     dificuldade = models.CharField(max_length=1, choices=DIFICULDADES_ESCOLHAS)
+    epoca = models.ForeignKey(Epoca, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nome_receita
