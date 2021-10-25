@@ -27,6 +27,7 @@ route.register(r'epocas', receitasviewsets.EpocaViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('conquistas/', include('conquistas.urls', 'conquista')),
     path('dicas/', include('dica.urls', 'dica')),
     path('receitas/', include('receita.urls', 'receita')),
     path('cozinheiro/', include('cozinheiro.urls', 'cozinheiro')),
