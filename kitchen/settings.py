@@ -152,6 +152,7 @@ CORS_ALLOW_CREDENTIALS = True
 # Knox configuration
 REST_KNOX = {
     'TOKEN_TTL': timedelta(hours=200),
+    'USER_SERIALIZER': 'cozinheiro.serializers.CozinheiroSerializer'
 }
 
 # Configure Django App for Heroku.

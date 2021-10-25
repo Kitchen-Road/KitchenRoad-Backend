@@ -9,6 +9,12 @@ class ReceitaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ReceitaConcluidaSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = Receita
+        fields = ['nome_receita']
+
+
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta():
         model = Categoria
