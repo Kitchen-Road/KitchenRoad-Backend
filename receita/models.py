@@ -22,7 +22,7 @@ class Epoca(models.Model):
 
 
 class Receita(models.Model):
-    nome_receita = models.CharField(unique=True, max_length=50)
+    nome_receita = models.CharField(max_length=50)
     imagem = models.ImageField(upload_to='post_img')
     link_video_receita = models.URLField()
     categoria_receita = models.ForeignKey(Categoria, on_delete=models.CASCADE)
