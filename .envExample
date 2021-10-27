@@ -1,0 +1,3 @@
+DEBUG= *Define the debug
+SECRET_KEY = *Define the secret Key
+URLBASE= *Define the url of the server

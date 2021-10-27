@@ -4,10 +4,12 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from django.contrib.auth import login
 from knox.auth import AuthToken
 from knox.views import LoginView as KnoxLoginView
+from rest_framework.views import APIView
 from .serializers import CozinheiroSerializer, ResgisterSerializer
 from .models import Cozinheiro
-from receita.serializers import ReceitaConcluidaSerializer
+from receita.serializers import ReceitaConcluidaSerializer, ReceitaSerializer
 from receita.models import Receita
+from django.http import JsonResponse
 
 
 class CozinheiroViewSet(viewsets.ModelViewSet):
@@ -58,3 +60,17 @@ class ReceitaCompletadaView(generics.UpdateAPIView, generics.GenericAPIView):
             return Response("Receita concluída!")
         except:
             return Response("Receita não encontrada!", status=status.HTTP_404_NOT_FOUND)
+
+
+class ReceitaListViewSet(generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = ReceitaSerializer
+
+    def get_object(self):
+        return Cozinheiro.objects.get(email=self.request.user)
+
+    def get(self, *args, **kwargs):
+        instance = self.get_object()
+        queryset = instance.receitas_completadas.all()
+        serializer = ReceitaSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
